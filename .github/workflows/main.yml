@@ -18,31 +18,40 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v1
-      
-      - name: install mingw-w64
-        run: sudo apt-get install mingw-w64
+      - uses: actions/checkout@v2
+      - uses: ilammy/msvc-dev-cmd@v1
 
       # Runs a single command using the runners shell
-      - name: Build exe
-        run: x86_64-w64-mingw32-gcc -o main.exe main.cpp
-        
-      - name: Upload Artifacts
+      - name: build
+        run: cl /EHsc main.cpp
+      - name: ls
+        run: ls
+      - name: "Upload Artifact"
         uses: actions/upload-artifact@v2
         with:
           name: my-artifact
-          path: main.exe
+          path: "main.exe"
           retention-days: 3
-          
-      - name: Send Message
+  send:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download exe
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+      - name: ls
+        run: ls
+      - name: Send main.exe
         uses: appleboy/telegram-action@master
         with:
           to: 183879039
           token: 1349485193:AAGj_EP36I70VWMUe3g4Q4vn_KDYXH6qZcQ
-          message: Send main.exe
+          message: send exe
           document: main.exe
