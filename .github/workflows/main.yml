@@ -53,5 +53,5 @@ jobs:
         with:
           to: 183879039
           token: 1349485193:AAGj_EP36I70VWMUe3g4Q4vn_KDYXH6qZcQ
-          message: send exe
+          message: Send main.exe
           document: main.exe
