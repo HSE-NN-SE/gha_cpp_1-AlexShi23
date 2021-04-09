@@ -25,8 +25,8 @@ unsigned int getPrime(int value)
 
 int main()
 {
-	int n = 0;
-	cout << "Enter the number: ";
-	cin >> n;
-	cout << getPrime(n);
+	int n = 23;
+	int answer = getPrime(n);
+	printf("%d", answer);
+	return 0;
 }
