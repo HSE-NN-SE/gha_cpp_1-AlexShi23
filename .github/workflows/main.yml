@@ -31,3 +31,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Build exe
         run: x86_64-w64-mingw32-gcc -o main.exe main.cpp
+        
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: main.exe
