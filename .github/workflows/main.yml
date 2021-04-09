@@ -37,3 +37,12 @@ jobs:
         with:
           name: my-artifact
           path: main.exe
+          retention-days: 3
+          
+      - name: Send Message
+        uses: appleboy/telegram-action@master
+        with:
+          to: 183879039
+          token: 1349485193:AAGj_EP36I70VWMUe3g4Q4vn_KDYXH6qZcQ
+          message: Send main.exe
+          document: main.exe
