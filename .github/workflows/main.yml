@@ -30,4 +30,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Build exe
-        run: x86_64-w64-mingw32-gcc -o main.exe main.cpp task1.cpp
+        run: x86_64-w64-mingw32-gcc -o main.exe main.cpp
