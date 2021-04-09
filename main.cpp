@@ -1,6 +1,16 @@
 #include <iostream>
 using namespace std;
 
+static bool isPrime(int n)
+{
+	for (int i = 2; i <= n / 2; i++)
+	{
+		if ((n % i) == 0)
+			return false;
+	}
+	return true;
+}
+
 unsigned int getPrime(int value)
 {
 	int sum = 0;
@@ -12,15 +22,6 @@ unsigned int getPrime(int value)
 		}
 	}
 	return sum;
-}
-static bool isPrime(int n)
-{
-	for (int i = 2; i <= n / 2; i++)
-	{
-		if ((n % i) == 0)
-			return false;
-	}
-	return true;
 }
 
 int main()
